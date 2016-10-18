@@ -2,4 +2,4 @@ This project provides some useful utilitys used for remotely controling AWG 710.
 The host running this code is Linux.
 
 Usage:
-run awgctl.sh help
+run awgctl help
