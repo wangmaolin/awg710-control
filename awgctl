@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ $# -eq 0 ]; then
+    echo "need to input command, run awgctl help to see the usage"
+elif [ $1 == "help" ]; then
+    echo "Usage: awgctl command"
+    echo "view: open usb camera to see the control pannel"
+    echo "other commands are in cmd folder, for example: awgctl ./cmd/othercmds"
+elif [ $1 == "view" ]; then
+    sudo mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0 -fps 30
+elif [ -f $1 ]; then
+    #(echo "awg"; cat $1; echo "q") | ./bin/client | tr ':' '\n'
+    (echo "awg"; cat $1; echo "q") | ./bin/client | sed 's/command://g'
+    echo
+else
+    echo "wrong command"
+fi
